@@ -124,22 +124,28 @@
         textField.placeholder = @"Task description";
     }];
     
-    UIAlertAction *action = [UIAlertAction actionWithTitle:@"Save"
-                                                     style:UIAlertActionStyleDefault
-                                                   handler:^(UIAlertAction *action) {
-                                                       
-                                                       UITextField *textField = textPrompt.textFields[0];
-                                                       
-                                                       NSString *taskString = [textField.text capitalizedString];
-                                                       
-                                                       TaskObject *task = [TaskObject taskWithDescription:taskString];
-                                                       
-                                                       [[RLMRealm defaultRealm] beginWriteTransaction];
-                                                       [[RLMRealm defaultRealm] addObjectWithNotification:task];
-                                                       [[RLMRealm defaultRealm] commitWriteTransaction];
-                                                   }];
+    UIAlertAction *save = [UIAlertAction actionWithTitle:@"Save"
+                                                   style:UIAlertActionStyleDefault
+                                                 handler:^(UIAlertAction *action) {
+                                                     
+                                                     UITextField *textField = textPrompt.textFields[0];
+                                                     
+                                                     NSString *taskString = [textField.text capitalizedString];
+                                                     
+                                                     TaskObject *task = [TaskObject taskWithDescription:taskString];
+                                                     
+                                                     [[RLMRealm defaultRealm] beginWriteTransaction];
+                                                     [[RLMRealm defaultRealm] addObjectWithNotification:task];
+                                                     [[RLMRealm defaultRealm] commitWriteTransaction];
+                                                 }];
+                           
     
-    [textPrompt addAction:action];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel"
+                                                     style:UIAlertActionStyleCancel
+                                                   handler:nil];
+    
+    [textPrompt addAction:save];
+    [textPrompt addAction:cancel];
     
     [self presentViewController:textPrompt animated:YES completion:nil];
 }
