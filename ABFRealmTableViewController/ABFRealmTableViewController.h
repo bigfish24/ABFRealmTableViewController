@@ -45,8 +45,6 @@
 
 /**
  *  The underlying RBQFetchedResultsController
- *
- *  Default is [RLMRealm defaultRealm]
  */
 @property (readonly, nonatomic) RBQFetchedResultsController *fetchedResultsController;
 
