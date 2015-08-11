@@ -1,5 +1,5 @@
 # ABFRealmTableViewController
-The `ABFRealmTableViewController` class is a subclass of `UITableViewController` but adds data-binding to an `RLMObject` subclass. The underlying `UITableView` will animate changes via use of [`RBQFetchedResultsController`](https://github.com/Roobiq/RBQFetchedResultsController).
+The `ABFRealmTableViewController` class is a subclass of `UITableViewController` but adds data binding to an `RLMObject` subclass. The underlying `UITableView` will animate changes via use of [`RBQFetchedResultsController`](https://github.com/Roobiq/RBQFetchedResultsController).
 
 To use, simply subclass `ABFRealmTableViewController` in the same way as `UITableViewController` and set the `entityName` property to the `RLMObject` class name. Similar to an `UITableView` implementation, you will need to implement the necessary `UITableViewControllerDelegate` and `UITableViewControllerDataSource` protocols.
 
