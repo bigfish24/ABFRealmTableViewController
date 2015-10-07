@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class ABFRealmTableViewController, RLMRealm, RBQFetchedResultsController;
+@class ABFRealmTableViewController, RLMRealm, RLMRealmConfiguration, RBQFetchedResultsController;
 
 @interface ABFRealmTableViewController : UITableViewController
 
@@ -37,15 +37,31 @@
 @property (nonatomic, strong) IBInspectable NSString *sectionNameKeyPath;
 
 /**
- *  The Realm in which the given entity resides in
+ *  The configuration for the Realm in which the entity resides
  *
- *  Default is [RLMRealm defaultRealm]
+ *  Default is [RLMRealmConfiguration defaultConfiguration]
  */
-@property (nonatomic, strong) RLMRealm *realm;
+@property (nonatomic, strong) RLMRealmConfiguration *realmConfiguration;
+
+/**
+ *  The Realm in which the given entity resides in
+ */
+@property (nonatomic, readonly) RLMRealm *realm;
 
 /**
  *  The underlying RBQFetchedResultsController
  */
-@property (readonly, nonatomic) RBQFetchedResultsController *fetchedResultsController;
+@property (nonatomic, readonly) RBQFetchedResultsController *fetchedResultsController;
+
+/**
+ *  Retrieve the RLMObject for a given index path
+ *
+ *  @warning Returned object is not thread-safe.
+ *
+ *  @param indexPath the index path of the object
+ *
+ *  @return RLMObject
+ */
+- (id)objectAtIndexPath:(NSIndexPath *)indexPath;
 
 @end

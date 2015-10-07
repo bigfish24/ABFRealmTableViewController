@@ -223,7 +223,6 @@
 				TargetAttributes = {
 					A0810C9D1B72B21B00CA4D98 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = QX5CR2FTN2;
 					};
 					A0810CB61B72B21B00CA4D98 = {
 						CreatedOnToolsVersion = 6.4;
@@ -495,10 +494,7 @@
 			baseConfigurationReference = 9F72E0022F77F5B7DCA2C8E5 /* Pods-ABFRealmTableViewControllerExampleTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -515,10 +511,7 @@
 			baseConfigurationReference = 15EB49F8268335C782AD0C8F /* Pods-ABFRealmTableViewControllerExampleTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = ABFRealmTableViewControllerExampleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

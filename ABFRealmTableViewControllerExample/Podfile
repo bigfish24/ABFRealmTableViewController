@@ -4,7 +4,7 @@
 target 'ABFRealmTableViewControllerExample' do
   pod 'Realm'
   pod 'RBQFetchedResultsController'
-  pod 'Colours'
+  pod 'Colours', '5.6.2'
 end
 
 target 'ABFRealmTableViewControllerExampleTests' do

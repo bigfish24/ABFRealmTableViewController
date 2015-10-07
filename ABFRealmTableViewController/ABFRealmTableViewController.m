@@ -19,7 +19,7 @@
 @end
 
 @implementation ABFRealmTableViewController
-@synthesize realm = _realm;
+@synthesize realmConfiguration = _realmConfiguration;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -77,9 +77,9 @@
 {
     [super viewDidLoad];
     
-    [self.fetchedResultsController performFetch];
-    
     self.viewLoaded = YES;
+    
+    [self updateFetchedResultsController];
 }
 
 - (void)didReceiveMemoryWarning
@@ -118,57 +118,89 @@
     [self updateFetchedResultsController];
 }
 
-- (void)setRealm:(RLMRealm *)realm
+- (void)setRealmConfiguration:(RLMRealmConfiguration *)realmConfiguration
 {
-    _realm = realm;
+    _realmConfiguration = realmConfiguration;
     
     [self updateFetchedResultsController];
 }
 
 #pragma mark - Getters
 
-- (RLMRealm *)realm
+- (RLMRealmConfiguration *)realmConfiguration
 {
-    if (!_realm) {
-        return [RLMRealm defaultRealm];
+    if (! _realmConfiguration) {
+        return [RLMRealmConfiguration defaultConfiguration];
     }
     
-    return _realm;
+    return _realmConfiguration;
+}
+
+- (RLMRealm *)realm
+{
+    return [RLMRealm realmWithConfiguration:self.realmConfiguration error:nil];
+}
+
+#pragma mark - Public
+
+- (id)objectAtIndexPath:(NSIndexPath *)indexPath
+{
+    return [self.fetchedResultsController objectAtIndexPath:indexPath];
 }
 
 #pragma mark - Private
 
 - (void)updateFetchedResultsController
 {
-    if (self.entityName &&
-        !self.viewLoaded) {
+    @synchronized(self) {
+        RBQFetchRequest *fetchRequest = [self tableFetchRequest:self.entityName
+                                                          realm:self.realm
+                                                      predicate:self.basePredicate];
         
-        RBQFetchRequest *fetchRequest = [RBQFetchRequest fetchRequestWithEntityName:self.entityName
-                                                                            inRealm:self.realm
-                                                                          predicate:self.basePredicate];
-        
-        [self.fetchedResultsController updateFetchRequest:fetchRequest
-                                       sectionNameKeyPath:self.sectionNameKeyPath
-                                           andPeformFetch:NO];
-    }
-    else if (self.entityName) {
-    
-        typeof(self) __weak weakSelf = self;
-        
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-            RBQFetchRequest *fetchRequest = [RBQFetchRequest fetchRequestWithEntityName:weakSelf.entityName
-                                                                                inRealm:weakSelf.realm
-                                                                              predicate:weakSelf.basePredicate];
+        if (fetchRequest) {
             
-            [weakSelf.fetchedResultsController updateFetchRequest:fetchRequest
-                                               sectionNameKeyPath:weakSelf.sectionNameKeyPath
-                                                   andPeformFetch:weakSelf.viewLoaded];
+            [self.fetchedResultsController updateFetchRequest:fetchRequest
+                                           sectionNameKeyPath:self.sectionNameKeyPath
+                                               andPeformFetch:YES];
             
-            if (weakSelf.viewLoaded) {
-                dispatch_async(dispatch_get_main_queue(), ^{
+            if (self.viewLoaded) {
+                typeof(self) __weak weakSelf = self;
+                
+                [self runOnMainThread:^{
                     [weakSelf.tableView reloadData];
-                });
+                }];
             }
+        }
+    }
+}
+
+- (RBQFetchRequest *)tableFetchRequest:(NSString *)entityName
+                                 realm:(RLMRealm *)realm
+                             predicate:(NSPredicate *)predicate
+{
+    if (entityName &&
+        realm) {
+        
+        RBQFetchRequest *fetchRequest = [RBQFetchRequest fetchRequestWithEntityName:entityName
+                                                                            inRealm:realm
+                                                                          predicate:predicate];
+        
+        fetchRequest.sortDescriptors = self.sortDescriptors;
+        
+        return fetchRequest;
+    }
+    
+    return nil;
+}
+
+- (void)runOnMainThread:(void (^)())block
+{
+    if ([NSThread isMainThread]) {
+        block();
+    }
+    else {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            block();
         });
     }
 }
