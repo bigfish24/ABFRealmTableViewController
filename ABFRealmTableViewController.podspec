@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "ABFRealmTableViewController"
-  s.version      = "1.0"
+  s.version      = "1.1"
   s.summary      = "Realm Data-Binding For UITableView"
   s.description  = <<-DESC
 The ABFRealmTableViewController class is a subclass of UITableViewController but adds data-binding to an RLMObject subclass.
