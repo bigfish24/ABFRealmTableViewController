@@ -15,43 +15,43 @@
 /**
  *  The entity (Realm object) name
  */
-@property (nonatomic, strong) IBInspectable NSString *entityName;
+@property (nonatomic, strong, nonnull) IBInspectable NSString *entityName;
 
 /**
  *  Predicate supported by Realm
  *
  *  http://realm.io/docs/cocoa/0.89.2/#querying-with-predicates
  */
-@property (nonatomic, strong) NSPredicate *basePredicate;
+@property (nonatomic, strong, nullable) NSPredicate *basePredicate;
 
 /**
  *  Array of RLMSortDescriptors
  *
  *  http://realm.io/docs/cocoa/0.89.2/#ordering-results
  */
-@property (nonatomic, strong) NSArray *sortDescriptors;
+@property (nonatomic, strong, nullable) NSArray *sortDescriptors;
 
 /**
  *  The section name key path used to create the sections. Can be nil if no sections.
  */
-@property (nonatomic, strong) IBInspectable NSString *sectionNameKeyPath;
+@property (nonatomic, strong, nullable) IBInspectable NSString *sectionNameKeyPath;
 
 /**
  *  The configuration for the Realm in which the entity resides
  *
  *  Default is [RLMRealmConfiguration defaultConfiguration]
  */
-@property (nonatomic, strong) RLMRealmConfiguration *realmConfiguration;
+@property (nonatomic, strong, nonnull) RLMRealmConfiguration *realmConfiguration;
 
 /**
  *  The Realm in which the given entity resides in
  */
-@property (nonatomic, readonly) RLMRealm *realm;
+@property (nonatomic, readonly, nonnull) RLMRealm *realm;
 
 /**
  *  The underlying RBQFetchedResultsController
  */
-@property (nonatomic, readonly) RBQFetchedResultsController *fetchedResultsController;
+@property (nonatomic, readonly, nonnull) RBQFetchedResultsController *fetchedResultsController;
 
 /**
  *  Retrieve the RLMObject for a given index path
@@ -62,6 +62,6 @@
  *
  *  @return RLMObject
  */
-- (id)objectAtIndexPath:(NSIndexPath *)indexPath;
+- (nullable id)objectAtIndexPath:(nonnull NSIndexPath *)indexPath;
 
 @end
