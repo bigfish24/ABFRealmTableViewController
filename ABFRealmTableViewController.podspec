@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "ABFRealmTableViewController"
-  s.version      = "1.2"
+  s.version      = "1.3"
   s.summary      = "Realm Data-Binding For UITableView"
   s.description  = <<-DESC
 The ABFRealmTableViewController class is a subclass of UITableViewController but adds data-binding to an RLMObject subclass.
@@ -12,7 +12,7 @@ The ABFRealmTableViewController class is a subclass of UITableViewController but
   s.source       = { :git => "https://github.com/bigfish24/ABFRealmTableViewController.git", :tag => "v#{s.version}" }
   s.source_files  = "ABFRealmTableViewController/*.{h,m}"
   s.requires_arc = true
-  s.dependency "RBQFetchedResultsController", ">= 2.3"
-  s.dependency "Realm", ">= 0.95.1"
+  s.dependency "RBQFetchedResultsController", ">= 2.4"
+  s.dependency "Realm", ">= 0.96"
 
 end

@@ -1,8 +1,8 @@
 use_frameworks!
 
 target 'RealmTableViewControllerExample' do
-  pod 'RealmSwift'
-  pod 'SwiftFetchedResultsController'
+  pod 'RealmSwift', ">= 0.96"
+  pod 'SwiftFetchedResultsController', ">= 2.4"
   pod 'Colours'
 end
 
