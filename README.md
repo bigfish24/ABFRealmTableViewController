@@ -43,6 +43,7 @@ pod 'RealmTableViewController'
 
 Build and run/test the Example project in Xcode to see `ABFRealmTableViewController` in action. This project uses CocoaPods. If you don't have [CocoaPods](http://cocoapods.org/) installed, grab it with [sudo] gem install cocoapods.
 
+**Objective-C**
 ```
 git clone https://github.com/bigfish24/ABFRealmTableViewController.git
 cd ABFRealmTableViewController/ABFRealmTableViewControllerExample
