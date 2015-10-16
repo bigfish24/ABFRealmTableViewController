@@ -182,6 +182,7 @@
 				A0810C9B1B72B21B00CA4D98 /* Frameworks */,
 				A0810C9C1B72B21B00CA4D98 /* Resources */,
 				1CF302EBC51FF23EC69EF7C1 /* Copy Pods Resources */,
+				9564CF8E6E8662B7BC03D9DA /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -201,6 +202,7 @@
 				A0810CB41B72B21B00CA4D98 /* Frameworks */,
 				A0810CB51B72B21B00CA4D98 /* Resources */,
 				6CE9A1E2D743B74D80690AB6 /* Copy Pods Resources */,
+				0DE7D47EF4D4C5D120BC5C42 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -270,6 +272,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0DE7D47EF4D4C5D120BC5C42 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ABFRealmTableViewControllerExampleTests/Pods-ABFRealmTableViewControllerExampleTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		1CF302EBC51FF23EC69EF7C1 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -313,6 +330,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9564CF8E6E8662B7BC03D9DA /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ABFRealmTableViewControllerExample/Pods-ABFRealmTableViewControllerExample-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FCD626C65C423D7580EEBDCA /* Check Pods Manifest.lock */ = {
