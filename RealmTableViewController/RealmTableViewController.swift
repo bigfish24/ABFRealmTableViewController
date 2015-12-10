@@ -109,13 +109,13 @@ public class RealmTableViewController: UITableViewController {
     // MARK: Initializers
     // MARK: Initialization
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+    override public init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
         self.baseInit()
     }
     
-    override init(style: UITableViewStyle) {
+    override public init(style: UITableViewStyle) {
         super.init(style: style)
         
         self.baseInit()
