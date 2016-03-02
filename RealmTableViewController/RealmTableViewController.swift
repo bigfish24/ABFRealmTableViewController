@@ -155,7 +155,7 @@ public class RealmTableViewController: UITableViewController {
         objc_sync_enter(self)
         if let fetchRequest = self.tableFetchRequest(self.entityName, inRealm: self.rlmRealm, predicate:self.basePredicate) {
             
-            self.fetchedResultsController.updateFetchRequest(fetchRequest, sectionNameKeyPath: nil, andPeformFetch: true)
+            self.fetchedResultsController.updateFetchRequest(fetchRequest, sectionNameKeyPath: self.sectionNameKeyPath, andPeformFetch: true)
             
             if self.viewLoaded {
                 self.runOnMainThread({ [weak self] () -> Void in
