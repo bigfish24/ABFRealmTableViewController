@@ -52,7 +52,7 @@ class MainTableViewController: RealmTableViewController {
                     let task = TaskObject.task(text.capitalizedString)
                     
                     try! Realm().beginWrite()
-                    try! Realm().addWithNotification(task, update: false)
+                    try! Realm().add(task, update: false)
                     try! Realm().commitWrite()
                 }
             }
@@ -93,7 +93,7 @@ extension MainTableViewController {
             
             if let task = self.objectAtIndexPath(TaskObject.self, indexPath: indexPath) {
                 try! Realm().beginWrite()
-                try! Realm().deleteWithNotification(task)
+                try! Realm().delete(task)
                 try! Realm().commitWrite()
             }
         }
