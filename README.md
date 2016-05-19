@@ -5,21 +5,7 @@ _**A Swift version was added with an identical API in v1.1.**_
 
 To use, simply subclass `ABFRealmTableViewController` in the same way as `UITableViewController` and set the `entityName` property to the Realm object class name. Similar to an `UITableView` implementation, you will need to implement the necessary `UITableViewControllerDelegate` and `UITableViewControllerDataSource` protocols.
 
-The data binding occurs through the use of [RBQFetchedResultsController](https://github.com/Roobiq/RBQFetchedResultsController), which requires that you log the changes you perform since Realm doesn't yet support fine-grained notifications. Luckily this is quite easy, through the provided helper methods with [RBQFetchedResultsController](https://github.com/Roobiq/RBQFetchedResultsController):
-
-```objc
-// Provided for RLMRealm/Realm for Objc/Swift versions
-addObjectWithNotification:
-addObjectsWithNotification:
-addOrUpdateObjectWithNotification:
-addOrUpdateObjectsFromArrayWithNotification:
-deleteObjectWithNotification:
-deleteObjectsWithNotification:
-
-// Provided for RLMObject/Object for Objc/Swift versions
-changeWithNotification:
-changeWithNotificationInTransaction:
-```
+_Starting with v1.5, the underlying data binding provided by `RBQFetchedResultsController` doesn't require any use of custom Realm mutation methods since Realm supports fine-grained notifications directly. As a result, you can just use `ABFRealmTableViewController` alongside the normal Realm methods._
 
 ####Screenshot
 The example application is a basic todo list with an object model: `TaskObject` that the `UITableView` is bound to. When a new `TaskObject` is created, the row animates in, and likewise when the `TaskObject` is deleted the row animates out.
