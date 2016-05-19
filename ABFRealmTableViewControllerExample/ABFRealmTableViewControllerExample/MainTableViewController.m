@@ -10,7 +10,6 @@
 #import "TaskObject.h"
 
 #import <Realm/Realm.h>
-#import <RBQFetchedResultsController/RLMRealm+Notifications.h>
 #import <RBQFetchedResultsController/RBQFetchedResultsController.h>
 #import <Colours/Colours.h>
 
@@ -90,7 +89,7 @@
         TaskObject *task = [self.fetchedResultsController objectAtIndexPath:indexPath];
         
         [[RLMRealm defaultRealm] transactionWithBlock:^{
-            [[RLMRealm defaultRealm] deleteObjectWithNotification:task];
+            [[RLMRealm defaultRealm] deleteObject:task];
         }];
     }
 }
@@ -135,7 +134,7 @@
                                                      TaskObject *task = [TaskObject taskWithDescription:taskString];
                                                      
                                                      [[RLMRealm defaultRealm] beginWriteTransaction];
-                                                     [[RLMRealm defaultRealm] addObjectWithNotification:task];
+                                                     [[RLMRealm defaultRealm] addObject:task];
                                                      [[RLMRealm defaultRealm] commitWriteTransaction];
                                                  }];
                            

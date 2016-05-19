@@ -158,10 +158,9 @@
                                                       predicate:self.basePredicate];
         
         if (fetchRequest) {
-            
             [self.fetchedResultsController updateFetchRequest:fetchRequest
                                            sectionNameKeyPath:self.sectionNameKeyPath
-                                               andPeformFetch:YES];
+                                              andPerformFetch:YES];
             
             if (self.viewLoaded) {
                 typeof(self) __weak weakSelf = self;

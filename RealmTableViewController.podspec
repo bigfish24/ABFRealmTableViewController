@@ -12,7 +12,7 @@ The RealmTableViewController class is a subclass of UITableViewController but ad
   s.source       = { :git => "https://github.com/bigfish24/ABFRealmTableViewController.git", :tag => "v#{s.version}" }
   s.source_files  = "RealmTableViewController/*.{swift}"
   s.requires_arc = true
-  s.dependency "SwiftFetchedResultsController", ">= 2.4"
-  s.dependency "RealmSwift", ">= 0.96"
+  s.dependency "SwiftFetchedResultsController", ">= 4.0.3"
+  s.dependency "RealmSwift", ">= 0.103.0"
 
 end
