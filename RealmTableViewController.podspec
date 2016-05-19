@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "RealmTableViewController"
-  s.version      = "1.5"
+  s.version      = "1.5.1"
   s.summary      = "Realm Swift Data-Binding For UITableView"
   s.description  = <<-DESC
 The RealmTableViewController class is a subclass of UITableViewController but adds data-binding to a Realm Swift object subclass.
