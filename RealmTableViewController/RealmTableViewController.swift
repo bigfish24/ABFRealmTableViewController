@@ -86,6 +86,11 @@ public class RealmTableViewController: UITableViewController {
         return nil
     }
     
+    /// The underlying RBQFetchedResultsController
+    public var fetchedResultsController: RBQFetchedResultsController {
+        return internalFetchedResultsController
+    }
+    
     
     // MARK: Object Retrieval
     
@@ -128,8 +133,8 @@ public class RealmTableViewController: UITableViewController {
     }
     
     private func baseInit() {
-        self.fetchedResultsController = RBQFetchedResultsController()
-        self.fetchedResultsController.delegate = self
+        self.internalFetchedResultsController = RBQFetchedResultsController()
+        self.internalFetchedResultsController.delegate = self
     }
     
     // MARK: Private Functions
@@ -137,7 +142,7 @@ public class RealmTableViewController: UITableViewController {
     
     private var internalConfiguration: Realm.Configuration?
     
-    private var fetchedResultsController: RBQFetchedResultsController!
+    private var internalFetchedResultsController: RBQFetchedResultsController!
     
     private var rlmSortDescriptors: [RLMSortDescriptor]?
     
