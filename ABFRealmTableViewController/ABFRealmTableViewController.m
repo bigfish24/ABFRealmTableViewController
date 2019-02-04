@@ -13,9 +13,6 @@
 #import <RBQFetchedResultsController/RBQFetchRequest.h>
 
 @interface ABFRealmTableViewController () <RBQFetchedResultsControllerDelegate>
-
-@property (assign, nonatomic) BOOL viewLoaded;
-
 @end
 
 @implementation ABFRealmTableViewController
@@ -76,8 +73,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.viewLoaded = YES;
     
     [self updateFetchedResultsController];
 }
@@ -162,7 +157,7 @@
                                            sectionNameKeyPath:self.sectionNameKeyPath
                                               andPerformFetch:YES];
             
-            if (self.viewLoaded) {
+            if (self.isViewLoaded) {
                 typeof(self) __weak weakSelf = self;
                 
                 [self runOnMainThread:^{
